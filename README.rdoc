@@ -1,3 +1,11 @@
+Hospital_v4 created 27 Jan 2015:
+
+-added correct redirect for delete doctor from patient list. 
+-added bootstrap "starter-template"
+-formatted pages with bootstrap
+
+-------------------------------------------------------------------------------
+
 Hospital_v3 created 26 Jan 2015:
 "Day 14 - January 26th 2015 - (Hospital v3)
 

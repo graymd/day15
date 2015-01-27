@@ -1,17 +1,62 @@
-%strong 
-  %h1 Clinic Info:
-  %br
-  Clinic Name:
-= @clinic.name
-%br
 %strong
-  Street Address:
+  %h1
+    %u Clinic Info:
+%strong
+  %h4
+    Clinic Name:
+    = @clinic.name
+%strong Street Address:
 = @clinic.st_address
-%br
-%strong
-  City Address:
+%br/
+%strong City:
 = @clinic.city
-%br
-%strong
-  State:
+%br/
+%strong State:
 = @clinic.state
+%br/
+= link_to "Edit Clinic", edit_clinic_path(@clinic)
+|
+\#{link_to "Delete Clinic", clinic_path(@clinic), method: :delete}
+%br/
+= link_to "Return to Clinics", clinics_path
+|
+\#{link_to "Return to Main", root_path}
+%br/
+%br/
+%div.col-md-4.col-md-offset-5
+  %p{class: "text-left"}
+    %strong Patient List:
+    = link_to "Add Patient", new_clinic_patient_path(@clinic)
+    %br/
+    - @patients.each do |patient|
+      %strong Name:
+      = link_to patient.last_name + ", " + patient.first_name, clinic_patient_path(@clinic, patient)
+      %br/
+      %strong Date of Birth:
+      = patient.date_of_birth
+      %br/
+      %strong Description:
+      = patient.description
+      %br/
+      %strong Gender:
+      = patient.gender
+      %br/
+      %strong Blood Type:
+      = patient.blood_type
+      %br/
+      = link_to "Edit Patient Information", edit_clinic_patient_path(@clinic, patient)
+      |
+      \#{link_to "Delete Patient Information", clinic_patient_path(@clinic, patient), method: :delete}
+      %br
+      %br 
+    %strong Clinic Doctors:
+    %br
+    - @doctors.each do |doctor|
+      = doctor.doctor_name
+      = link_to "Delete Doctor", destroy_doctor_clinic_path(doctor), method: :delete
+      %br
+    = form_for @doctor, url: create_doctor_clinic_path(@clinic) do |f|
+      = f.label :doctor_name
+      = f.text_area :doctor_name
+      %br/
+      = f.submit
