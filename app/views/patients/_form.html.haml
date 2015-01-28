@@ -1,6 +1,6 @@
 = form_for([@clinic, @patient]) do |f|
   - if @patient.errors.any?
-    %p#notice= notice
+    %p#notice=notice
     - @patient.errors.full_messages.each do |message|
       = message
       %br/

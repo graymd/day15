@@ -3,6 +3,8 @@ Hospital_v4 created 27 Jan 2015:
 -added correct redirect for delete doctor from patient list. 
 -added bootstrap "starter-template"
 -formatted pages with bootstrap
+-fixed patient form validation for create and update.  error was not showing up on form page and success alert was not showing up on hospital show page.
+-cannot figure out how to better align the doctor name entry text box on clinics and patient show pages. 
 
 -------------------------------------------------------------------------------
 

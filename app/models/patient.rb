@@ -26,17 +26,4 @@ class Patient < ActiveRecord::Base
         errors.add(:date_of_birth, 'Error. Patient must be at least 10 years old') if self.date_of_birth > 10.years.ago.to_date  
     end
   end
-
-
-
 end
-
-
-# validate :at_least_18
-
-# def at_least_18
-
-#     if self.birthdate
-#       errors.add(:birthdate, 'You must be 18 years or older.') if self.birthdate > 18.years.ago.to_date
-#     end
-# end

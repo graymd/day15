@@ -19,14 +19,14 @@ class PatientsController < ApplicationController
   end
 
   def create
-    @patient = @clinic.patients.create patient_params
     @clinic = Clinic.find params[:clinic_id]
+    @patient = @clinic.patients.create patient_params
     @medications = Medication.all
-    if @clinic.patients.create
+    if @patient.save
       flash[:notice] = 'Patient info was successfully saved.'
       redirect_to clinic_path(@clinic)
     else
-      flash[:error] = 'Patient info was NOT successfully saved.'
+      flash[:notice] = 'Patient info was NOT successfully saved.'
       render :new
     end
   end
@@ -40,6 +40,7 @@ class PatientsController < ApplicationController
   def update
     @clinic = Clinic.find params[:clinic_id]
     @patient = @clinic.patients.find params[:id]
+    @medications = Medication.all
     if @patient.update_attributes patient_params
       flash[:notice] = 'Patient info was successfully updated.'
       redirect_to clinic_path(@clinic)
